@@ -367,6 +367,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 # import streamlit as st
 # import pandas as pd
 # from streamlit_option_menu import option_menu
@@ -419,99 +429,47 @@
 # # -------------------------------
 # # Streamlit Page Config
 # # -------------------------------
-# st.set_page_config(page_title="Factory Dashboard", layout="centered", page_icon="📊")
-# # st.markdown("""
-# #     <style>
-# #         body {
-# #             background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%) !important;
-# #             font-family: 'Segoe UI', sans-serif;
-# #         }
-# #         .block-container {
-# #             padding-top: 1rem;
-# #             padding-bottom: 2rem;
-# #         }
-# #         .report-card {
-# #             background-color: #ffffff;
-# #             padding: 1rem 1.5rem;
-# #             border-radius: 1.2rem;
-# #             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-# #             margin-bottom: 1rem;
-# #             border-left: 6px solid #42a5f5;
-# #         }
-# #         .report-header {
-# #             color: #1e88e5;
-# #             font-weight: 600;
-# #             font-size: 1.2rem;
-# #             margin-bottom: 0.5rem;
-# #         }
-# #     </style>
-# # """, unsafe_allow_html=True)
-
-
+# st.set_page_config(page_title="Factory Dashboard", layout="centered", page_icon="📈")
 # st.markdown("""
 #     <style>
-#     /* Set gradient background */
 #     body {
-#         background: linear-gradient(145deg, #e8f0ff, #fef9f3);
-#         background-attachment: fixed;
+#         background: url('https://images.unsplash.com/photo-1581090700227-1c9d7d1c7fe1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
 #         background-size: cover;
+#         background-attachment: fixed;
 #         font-family: 'Segoe UI', sans-serif;
-#         color: #333333;
+#         color: #ffffff;
 #     }
 
-#     /* App main container styling */
 #     .block-container {
 #         padding-top: 1.5rem;
 #         padding-bottom: 2rem;
 #         max-width: 800px;
 #         margin: auto;
+#         background-color: rgba(0, 0, 0, 0.6);
+#         border-radius: 1rem;
+#         padding: 2rem;
 #     }
 
-#     /* Section headers */
 #     .report-header {
-#         font-size: 1.2rem;
+#         font-size: 1.3rem;
 #         font-weight: bold;
-#         color: #3056d3;
+#         color: #00ffcc;
 #         margin-top: 1.5rem;
 #         margin-bottom: 0.5rem;
-#         border-left: 4px solid #3056d3;
+#         border-left: 4px solid #00ffcc;
 #         padding-left: 0.6rem;
 #     }
 
-#     /* Card styles */
 #     .report-card {
-#         background-color: #ffffffcc;
+#         background-color: rgba(255, 255, 255, 0.1);
 #         padding: 1rem 1.2rem;
 #         margin-bottom: 1rem;
 #         border-radius: 1.2rem;
-#         box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-#         border-left: 5px solid #4A90E2;
-#         transition: transform 0.2s;
+#         border-left: 5px solid #00ccff;
+#         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 #     }
-
-#     .report-card:hover {
-#         transform: scale(1.02);
-#         box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-#     }
-
-#     /* Optional table tweaks */
-#     .stDataFrame, .stTable {
-#         background-color: #ffffffdd;
-#         border-radius: 0.5rem;
-#         padding: 0.5rem;
-#     }
-
-#     /* Dropdown styling */
-#     .st-emotion-cache-16txtl3 {
-#         background-color: #fff;
-#         border-radius: 10px;
-#         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-#     }
-
 #     </style>
 # """, unsafe_allow_html=True)
-
-
 
 # st.title("📊 Factory Dashboard")
 
@@ -522,19 +480,16 @@
 #     orientation="horizontal"
 # )
 
-# # -------------------------------
-# # Report Logic
-# # -------------------------------
 # if selected == "Production Output":
-#     st.header("🎁 Production Output")
+#     st.markdown("<div class='report-header'>🎁 Production Output</div>", unsafe_allow_html=True)
 
 #     st.markdown("<div class='report-header'>📊 FOB Value (Today vs Same Day Last Month)</div>", unsafe_allow_html=True)
 #     st.dataframe(load_production_output(), use_container_width=True)
 
-#     st.markdown("<div class='report-header'>⏰ Today's Stage-wise Output</div>", unsafe_allow_html=True)
+#     st.markdown("<div class='report-header'>🧑‍🏭 Today's Stage-wise Output</div>", unsafe_allow_html=True)
 #     for _, row in load_stagewise_today().iterrows():
 #         with st.container():
-#             st.markdown(f"<div class='report-card'>🔧 <b>{row['Process']}</b>: {row['Output (pcs)']} pcs | {row['Labor Hours']} hrs</div>", unsafe_allow_html=True)
+#             st.markdown(f"<div class='report-card'>🔧 <b>{row['Process']}:</b> {row['Output (pcs)']} pcs | {row['Labor Hours']} hrs</div>", unsafe_allow_html=True)
 
 #     st.markdown("<div class='report-header'>📊 Cumulative Output (Month vs Last Month)</div>", unsafe_allow_html=True)
 #     for _, row in load_cumulative_output().iterrows():
@@ -548,7 +503,7 @@
 #             """, unsafe_allow_html=True)
 
 # elif selected == "Revenue":
-#     st.header("💰 Revenue")
+#     st.markdown("<div class='report-header'>💰 Revenue</div>", unsafe_allow_html=True)
 #     data = load_revenue_data()
 
 #     st.markdown("<div class='report-header'>📆 Billing</div>", unsafe_allow_html=True)
@@ -564,7 +519,7 @@
 #         st.markdown(f"<div class='report-card'>📦 <b>{k}</b>: {v:.2f}M</div>", unsafe_allow_html=True)
 
 # elif selected == "Margin":
-#     st.header("📈 Rolling Margin - 6 Months")
+#     st.markdown("<div class='report-header'>📈 Rolling Margin - 6 Months</div>", unsafe_allow_html=True)
 #     df = load_margin_data()
 #     st.line_chart(df.set_index("Month"))
 
@@ -642,46 +597,39 @@ def load_margin_data():
 st.set_page_config(page_title="Factory Dashboard", layout="centered", page_icon="📈")
 st.markdown("""
     <style>
-    body {
-        background: url('https://images.unsplash.com/photo-1581090700227-1c9d7d1c7fe1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-        background-size: cover;
-        background-attachment: fixed;
-        font-family: 'Segoe UI', sans-serif;
-        color: #ffffff;
-    }
-
-    .block-container {
-        padding-top: 1.5rem;
-        padding-bottom: 2rem;
-        max-width: 800px;
-        margin: auto;
-        background-color: rgba(0, 0, 0, 0.6);
-        border-radius: 1rem;
-        padding: 2rem;
-    }
-
-    .report-header {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #00ffcc;
-        margin-top: 1.5rem;
-        margin-bottom: 0.5rem;
-        border-left: 4px solid #00ffcc;
-        padding-left: 0.6rem;
-    }
-
-    .report-card {
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 1rem 1.2rem;
-        margin-bottom: 1rem;
-        border-radius: 1.2rem;
-        border-left: 5px solid #00ccff;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
+        body {
+            background: linear-gradient(to bottom right, #f2f6fc, #dbe9ff);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .block-container {
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+        .report-card {
+            background-color: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1rem;
+            border-left: 6px solid #4A90E2;
+        }
+        .report-header {
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .title-style {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin-top: -40px;
+        }
     </style>
 """, unsafe_allow_html=True)
 
-st.title("📊 Factory Dashboard")
+st.markdown("<div class='title-style'>📊 Factory Dashboard</div>", unsafe_allow_html=True)
 
 selected = option_menu(
     menu_title="Select Report",
@@ -690,6 +638,9 @@ selected = option_menu(
     orientation="horizontal"
 )
 
+# -------------------------------
+# Report Logic
+# -------------------------------
 if selected == "Production Output":
     st.markdown("<div class='report-header'>🎁 Production Output</div>", unsafe_allow_html=True)
 
@@ -699,9 +650,9 @@ if selected == "Production Output":
     st.markdown("<div class='report-header'>🧑‍🏭 Today's Stage-wise Output</div>", unsafe_allow_html=True)
     for _, row in load_stagewise_today().iterrows():
         with st.container():
-            st.markdown(f"<div class='report-card'>🔧 <b>{row['Process']}:</b> {row['Output (pcs)']} pcs | {row['Labor Hours']} hrs</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='report-card'>🔧 <b>{row['Process']}</b>: {row['Output (pcs)']} pcs | {row['Labor Hours']} hrs</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='report-header'>📊 Cumulative Output (Month vs Last Month)</div>", unsafe_allow_html=True)
+    st.markdown("<div class='report-header'>📈 Cumulative Output (Month vs Last Month)</div>", unsafe_allow_html=True)
     for _, row in load_cumulative_output().iterrows():
         with st.container():
             st.markdown(f"""
@@ -718,7 +669,7 @@ elif selected == "Revenue":
 
     st.markdown("<div class='report-header'>📆 Billing</div>", unsafe_allow_html=True)
     for k, v in data["Billing"].items():
-        st.markdown(f"<div class='report-card'>📅 <b>{k}</b>: ${v:.2f}M</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='report-card'>🧾 <b>{k}</b>: ${v:.2f}M</div>", unsafe_allow_html=True)
 
     st.markdown("<div class='report-header'>📦 Order In Hand</div>", unsafe_allow_html=True)
     for k, v in data["Order In Hand"].items():
@@ -726,10 +677,9 @@ elif selected == "Revenue":
 
     st.markdown("<div class='report-header'>✉️ Order Received</div>", unsafe_allow_html=True)
     for k, v in data["Order Received"].items():
-        st.markdown(f"<div class='report-card'>📦 <b>{k}</b>: {v:.2f}M</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='report-card'>📥 <b>{k}</b>: {v:.2f}M</div>", unsafe_allow_html=True)
 
 elif selected == "Margin":
-    st.markdown("<div class='report-header'>📈 Rolling Margin - 6 Months</div>", unsafe_allow_html=True)
+    st.markdown("<div class='report-header'>🔢 Rolling Margin - 6 Months</div>", unsafe_allow_html=True)
     df = load_margin_data()
     st.line_chart(df.set_index("Month"))
-
